@@ -1,4 +1,4 @@
-package com.huhx0015.xyzreader.ui;
+package com.huhx0015.xyzreader.activities;
 
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
@@ -9,7 +9,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -23,6 +22,8 @@ import com.huhx0015.xyzreader.R;
 import com.huhx0015.xyzreader.data.ArticleLoader;
 import com.huhx0015.xyzreader.data.ItemsContract;
 import com.huhx0015.xyzreader.data.UpdaterService;
+import com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView;
+import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
 
 /**
  * An activity representing a list of Articles. This activity has different presentations for
