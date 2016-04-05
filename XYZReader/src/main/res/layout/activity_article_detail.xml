@@ -24,5 +24,7 @@
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/up"
             android:src="@drawable/ic_arrow_back" />
+
     </FrameLayout>
+
 </android.support.design.widget.CoordinatorLayout>
