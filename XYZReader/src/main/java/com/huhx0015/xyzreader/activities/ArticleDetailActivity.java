@@ -15,18 +15,22 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
-
 import com.huhx0015.xyzreader.R;
 import com.huhx0015.xyzreader.data.ArticleLoader;
 import com.huhx0015.xyzreader.data.ItemsContract;
 import com.huhx0015.xyzreader.fragments.ArticleDetailFragment;
 
-/**
- * An activity representing a single Article detail screen, letting you swipe between articles.
+/** -----------------------------------------------------------------------------------------------
+ *  [ArticleDetailActivity] CLASS
+ *  DESCRIPTION: ArticleDetailActivity is an activity representing a single Article detail screen,
+ *  letting you swipe between articles.
+ *  -----------------------------------------------------------------------------------------------
  */
-public class ArticleDetailActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<Cursor> {
+public class ArticleDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // DATABASE VARIABLES
     private Cursor mCursor;
     private long mStartId;
 
@@ -34,10 +38,13 @@ public class ArticleDetailActivity extends AppCompatActivity
     private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
     private int mTopInset;
 
+    // VIEW VARIABLES
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
     private View mUpButtonContainer;
     private View mUpButton;
+
+    /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +114,8 @@ public class ArticleDetailActivity extends AppCompatActivity
             }
         }
     }
+
+    /** OVERRIDE METHODS _______________________________________________________________________ **/
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {

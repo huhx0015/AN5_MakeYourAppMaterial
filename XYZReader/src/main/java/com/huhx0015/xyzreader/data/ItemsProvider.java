@@ -15,6 +15,10 @@ import android.net.Uri;
 import java.util.ArrayList;
 import java.util.List;
 
+/** -----------------------------------------------------------------------------------------------
+ *  [ItemsProvider] CLASS
+ *  -----------------------------------------------------------------------------------------------
+ */
 public class ItemsProvider extends ContentProvider {
 	private SQLiteOpenHelper mOpenHelper;
 

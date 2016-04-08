@@ -25,16 +25,17 @@ package com.huhx0015.xyzreader.data;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-/**
- * Helper for building selection clauses for {@link SQLiteDatabase}. Each
+/** -----------------------------------------------------------------------------------------------
+ * [SelectionBuilder] CLASS
+ * DESCRIPTION: Helper for building selection clauses for {@link SQLiteDatabase}. Each
  * appended clause is combined using {@code AND}. This class is <em>not</em>
  * thread safe.
+ *  -----------------------------------------------------------------------------------------------
  */
 public class SelectionBuilder {
     private String mTable = null;

@@ -25,14 +25,15 @@ import com.huhx0015.xyzreader.data.UpdaterService;
 import com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
 
-/**
- * An activity representing a list of Articles. This activity has different presentations for
- * handset and tablet-size devices. On handsets, the activity presents a list of items, which when
- * touched, lead to a {@link ArticleDetailActivity} representing item details. On tablets, the
- * activity presents a grid of items as cards.
+/** -----------------------------------------------------------------------------------------------
+ * [ArticleListActivity] CLASS
+ * DESCRIPTION:  An activity representing a list of Articles. This activity has different
+ * presentations for handset and tablet-size devices. On handsets, the activity presents a list of
+ * items, which when touched, lead to a {@link ArticleDetailActivity} representing item details. On
+ * tablets, the activity presents a grid of items as cards.
+ *  -----------------------------------------------------------------------------------------------
  */
-public class ArticleListActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+public class ArticleListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;

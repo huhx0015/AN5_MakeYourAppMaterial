@@ -3,6 +3,10 @@ package com.huhx0015.xyzreader.remote;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/** -----------------------------------------------------------------------------------------------
+ * [Config] CLASS
+ *  -----------------------------------------------------------------------------------------------
+ */
 public class Config {
     public static final URL BASE_URL;
 

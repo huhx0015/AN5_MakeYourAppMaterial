@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.huhx0015.xyzreader.R;
@@ -33,13 +32,15 @@ import com.huhx0015.xyzreader.ui.DrawInsetsFrameLayout;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
 import com.huhx0015.xyzreader.ui.ObservableScrollView;
 
-/**
- * A fragment representing a single Article detail screen. This fragment is
- * either contained in a {@link ArticleListActivity} in two-pane mode (on
- * tablets) or a {@link ArticleDetailActivity} on handsets.
+/** -----------------------------------------------------------------------------------------------
+ * [ArticleDetailFragment] CLASS
+ * DESCRIPTION: A fragment representing a single Article detail screen. This fragment is either
+ * contained in a {@link ArticleListActivity} in two-pane mode (on tablets) or a
+ * {@link ArticleDetailActivity} on handsets.
+ *  -----------------------------------------------------------------------------------------------
  */
-public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+public class ArticleDetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";

@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Bacon" >
         <activity
-            android:name="com.huhx0015.xyzreader.ui.ArticleListActivity"
+            android:name="com.huhx0015.xyzreader.activities.ArticleListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +28,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huhx0015.xyzreader.ui.ArticleDetailActivity"
-            android:parentActivityName="com.huhx0015.xyzreader.ui.ArticleListActivity" >
+            android:name="com.huhx0015.xyzreader.activities.ArticleDetailActivity"
+            android:parentActivityName="com.huhx0015.xyzreader.activities.ArticleListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -40,7 +40,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.huhx0015.xyzreader.ui.ArticleListActivity" />
+                android:value=".activities.ArticleListActivity" />
         </activity>
 
         <service
