@@ -75,7 +75,7 @@
                         android:textColor="#8fff" />
                 </LinearLayout>
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/article_body"
                     style="@style/TextAppearance.AppCompat.Body2"
                     android:layout_width="match_parent"
