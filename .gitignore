@@ -1,0 +1,9 @@
+/XYZ_Reader.iml
+/local.properties
+/XYZReader/gradle
+/XYZReader/build
+/gradle
+/build
+/.idea
+/.gradle
+.DS_Store
