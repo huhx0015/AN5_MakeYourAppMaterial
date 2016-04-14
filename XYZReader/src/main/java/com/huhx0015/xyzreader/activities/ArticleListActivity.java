@@ -23,6 +23,7 @@ import com.huhx0015.xyzreader.data.ItemsContract;
 import com.huhx0015.xyzreader.data.UpdaterService;
 import com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
+import com.squareup.picasso.Picasso;
 
 /** -----------------------------------------------------------------------------------------------
  * [ArticleListActivity] CLASS
