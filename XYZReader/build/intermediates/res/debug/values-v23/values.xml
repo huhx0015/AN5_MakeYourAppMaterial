@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/values-v23/values-v23.xml -->
+    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/values-v23/values-v23.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat.Widget.ActionBar.Menu" parent="android:TextAppearance.Material.Widget.ActionBar.Menu"/>
     <style name="Base.TextAppearance.AppCompat.Widget.Button.Inverse" parent="android:TextAppearance.Material.Widget.Button.Inverse"/>
@@ -36,7 +36,7 @@
     <style name="Base.Widget.AppCompat.RatingBar.Indicator" parent="android:Widget.Material.RatingBar.Indicator"/>
     <style name="Base.Widget.AppCompat.RatingBar.Small" parent="android:Widget.Material.RatingBar.Small"/>
     <style name="Base.Widget.AppCompat.Spinner.Underlined" parent="android:Widget.Material.Spinner.Underlined"/>
-    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.2.1/res/values-v23/values-v23.xml -->
+    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.3.0/res/values-v23/values-v23.xml -->
     <eat-comment/>
     <style name="CardView" parent="Base.CardView">
         <item name="cardBackgroundColor">?android:attr/colorBackgroundFloating</item>

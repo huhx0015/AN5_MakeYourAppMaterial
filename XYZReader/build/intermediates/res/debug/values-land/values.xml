@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/values-land/values-land.xml -->
+    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/values-land/values-land.xml -->
     <eat-comment/>
     <bool name="abc_action_bar_embed_tabs_pre_jb">true</bool>
     <bool name="abc_config_allowActionMenuItemTextWithIcon">true</bool>
@@ -12,7 +12,7 @@
     <eat-comment/>
     <dimen name="detail_inner_horiz_margin">112dp</dimen>
     <dimen name="detail_photo_height">224dp</dimen>
-    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/design/23.2.1/res/values-land/values-land.xml -->
+    <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/design/23.3.0/res/values-land/values-land.xml -->
     <eat-comment/>
     <style name="Widget.Design.TabLayout" parent="Base.Widget.Design.TabLayout">
         <item name="tabGravity">center</item>

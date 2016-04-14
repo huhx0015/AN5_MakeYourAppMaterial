@@ -17,4 +17,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="@color/background_material_dark" />
 </selector>
-<!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/color/abc_background_cache_hint_selector_material_dark.xml -->
+<!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/res/color/abc_background_cache_hint_selector_material_dark.xml -->

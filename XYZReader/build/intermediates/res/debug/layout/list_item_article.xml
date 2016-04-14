@@ -21,7 +21,7 @@
             android:layout_height="100dp"
             android:background="@color/photo_placeholder" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/article_title"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:ellipsize="end"
             android:maxLines="4" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/article_subtitle"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"

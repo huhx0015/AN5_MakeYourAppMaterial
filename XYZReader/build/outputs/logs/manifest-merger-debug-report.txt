@@ -29,30 +29,30 @@ ADDED from AndroidManifest.xml:9:5
 		ADDED from AndroidManifest.xml:9:22
 application
 ADDED from AndroidManifest.xml:11:5
-MERGED from com.android.support:design:23.2.1:22:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:appcompat-v7:23.2.1:25:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:animated-vector-drawable:23.2.1:7:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:7:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:7:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:support-v13:23.2.1:22:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:appcompat-v7:23.2.1:25:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:animated-vector-drawable:23.2.1:7:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:7:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:7:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:palette-v7:23.2.1:22:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:support-v4:23.2.1:22:5
-MERGED from com.android.support:cardview-v7:23.2.1:22:5
+MERGED from com.android.support:design:23.3.0:22:5
+MERGED from com.android.support:appcompat-v7:23.3.0:25:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:7:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:animated-vector-drawable:23.3.0:7:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:7:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v13:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:appcompat-v7:23.3.0:25:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:7:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:animated-vector-drawable:23.3.0:7:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:7:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:palette-v7:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:support-v4:23.3.0:22:5
+MERGED from com.android.support:cardview-v7:23.3.0:22:5
 	android:label
 		ADDED from AndroidManifest.xml:14:9
 	android:allowBackup
@@ -119,34 +119,34 @@ ADDED from AndroidManifest.xml:42:9
 		ADDED from AndroidManifest.xml:42:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
-MERGED from com.android.support:design:23.2.1:20:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:appcompat-v7:23.2.1:21:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:animated-vector-drawable:23.2.1:5:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:5:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:5:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:recyclerview-v7:23.2.1:20:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:support-v13:23.2.1:20:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:appcompat-v7:23.2.1:21:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:animated-vector-drawable:23.2.1:5:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:5:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:support-vector-drawable:23.2.1:5:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:palette-v7:23.2.1:20:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:recyclerview-v7:23.2.1:20:5
-MERGED from com.android.support:support-v4:23.2.1:20:5
-MERGED from com.android.support:cardview-v7:23.2.1:20:5
+MERGED from com.android.support:design:23.3.0:20:5
+MERGED from com.android.support:appcompat-v7:23.3.0:21:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:5:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:animated-vector-drawable:23.3.0:5:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:5:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:recyclerview-v7:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:support-v13:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:appcompat-v7:23.3.0:21:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:5:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:animated-vector-drawable:23.3.0:5:5
+MERGED from com.android.support:support-vector-drawable:23.3.0:5:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:palette-v7:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:recyclerview-v7:23.3.0:20:5
+MERGED from com.android.support:support-v4:23.3.0:20:5
+MERGED from com.android.support:cardview-v7:23.3.0:20:5
 	tools:overrideLibrary
-		ADDED from com.android.support:appcompat-v7:23.2.1:23:9
+		ADDED from com.android.support:appcompat-v7:23.3.0:23:9
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0

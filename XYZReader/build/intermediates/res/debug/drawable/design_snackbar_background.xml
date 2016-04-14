@@ -19,4 +19,4 @@
        android:shape="rectangle">
     <corners android:radius="@dimen/design_snackbar_background_corner_radius"/>
     <solid android:color="@color/design_snackbar_background_color"/>
-</shape><!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/design/23.2.1/res/drawable/design_snackbar_background.xml -->
+</shape><!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/build/intermediates/exploded-aar/com.android.support/design/23.3.0/res/drawable/design_snackbar_background.xml -->
