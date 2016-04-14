@@ -35,7 +35,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.item/vnd.com.example.xyzreader.items" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.huhx0015.xyzreader.items" />
             </intent-filter>
 
             <meta-data
