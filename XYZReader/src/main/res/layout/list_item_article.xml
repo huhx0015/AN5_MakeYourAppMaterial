@@ -21,12 +21,23 @@
         android:orientation="vertical">
 
         <!--suppress AndroidLintContentDescription -->
-        <com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView
-            android:id="@+id/thumbnail"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/photo_placeholder"
-            android:scaleType="centerCrop" />
+            android:layout_height="wrap_content"
+            android:background="@color/photo_placeholder">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/article_progress_bar"
+                android:layout_gravity="center" />
+
+            <com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop" />
+        </FrameLayout>
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/article_title"

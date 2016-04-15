@@ -70,7 +70,8 @@
             android:paddingTop="116dp"
             android:paddingLeft="@dimen/list_side_margin"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="28dp" />
+            android:paddingBottom="28dp"
+            app:layout_anchor="@id/swipe_refresh_layout" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>
