@@ -6,14 +6,14 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/cn_tag_fragment_app_bar"
+        android:id="@+id/fragment_article_detail_app_bar"
         android:layout_width="match_parent"
         android:layout_height="296dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/cn_tag_activity_collapsing_toolbar"
+            android:id="@+id/fragment_article_detail_collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -26,19 +26,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:id="@+id/cn_tag_fragment_collapsing_toolbar_container">
+                android:id="@+id/fragment_article_detail_collapsing_toolbar_container">
 
                 <FrameLayout
                     android:id="@+id/fragment_article_detail_photo_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <!--suppress AndroidLintContentDescription -->
                     <View
+                        android:id="@+id/fragment_article_detail_photo_container_background"
                         android:layout_width="match_parent"
                         android:layout_height="144dp" />
 
                     <FrameLayout
+                        android:id="@+id/fragment_article_detail_photo_subcontainer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
@@ -46,7 +47,7 @@
                         <ProgressBar
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/photo_progress_bar"
+                            android:id="@+id/fragment_article_detail_photo_progress_bar"
                             android:layout_gravity="center" />
 
                         <ImageView
@@ -71,7 +72,7 @@
                     android:paddingBottom="@dimen/detail_metabar_vert_padding"
                     android:layout_marginBottom="@dimen/detail_metabar_vert_padding">
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/fragment_article_detail_title"
                         style="@style/TextAppearance.AppCompat.Headline"
                         android:layout_width="match_parent"
@@ -83,7 +84,7 @@
                         android:textSize="@dimen/detail_title_text_size"
                         android:lineSpacingMultiplier="0.9" />
 
-                    <TextView
+                    <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/fragment_article_detail_byline"
                         style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
@@ -94,7 +95,7 @@
             </LinearLayout>
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/cn_tag_fragment_toolbar"
+                android:id="@+id/fragment_article_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -112,6 +113,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <com.huhx0015.xyzreader.ui.MaxWidthLinearLayout
+                android:id="@+id/fragment_article_detail_body_container"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,6 +151,5 @@
         android:elevation="@dimen/fab_elevation"
         android:contentDescription="@string/action_share"
         android:stateListAnimator="@anim/fab_state_list_anim" />
- />
 
 </android.support.design.widget.CoordinatorLayout>
