@@ -32,6 +32,7 @@ import com.huhx0015.xyzreader.activities.ArticleListActivity;
 import com.huhx0015.xyzreader.data.ArticleLoader;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /** -----------------------------------------------------------------------------------------------
  * [ArticleDetailFragment] CLASS
@@ -117,6 +118,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
+        ButterKnife.bind(this, mRootView);
 
 //        mCoordinatorLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
 //            @Override
@@ -153,6 +155,14 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         bindViews();
         updateStatusBar();
         return mRootView;
+    }
+
+    // onDestroyView(): This function runs when the screen is no longer visible and the view is
+    // destroyed.
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this); // Sets all injected views to null.
     }
 
     private void updateStatusBar() {
