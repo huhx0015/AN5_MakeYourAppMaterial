@@ -40,7 +40,7 @@
         </FrameLayout>
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/article_title"
+            android:id="@+id/fragment_article_detail_title"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

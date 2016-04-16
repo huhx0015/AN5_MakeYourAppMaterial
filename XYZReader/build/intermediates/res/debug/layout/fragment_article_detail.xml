@@ -1,45 +1,62 @@
-<com.huhx0015.xyzreader.ui.DrawInsetsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/draw_insets_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.huhx0015.xyzreader.ui.ObservableScrollView
-        android:id="@+id/scrollview"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/cn_tag_fragment_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="296dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
 
-        <FrameLayout
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/cn_tag_activity_collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/photo_background_protection">
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            android:fitsSystemWindows="true">
 
-            <FrameLayout
-                android:id="@+id/photo_container"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!--suppress AndroidLintContentDescription -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="144dp" />
-
-                <ImageView
-                    android:id="@+id/photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
-
-            </FrameLayout>
-
-            <com.huhx0015.xyzreader.ui.MaxWidthLinearLayout
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:maxWidth="@dimen/detail_card_max_width"
-                android:background="#fff"
-                android:elevation="2dp"
-                android:layout_marginTop="@dimen/detail_card_top_margin">
+                android:id="@+id/cn_tag_fragment_collapsing_toolbar_container">
+
+                <FrameLayout
+                    android:id="@+id/photo_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--suppress AndroidLintContentDescription -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="144dp" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/photo_progress_bar"
+                            android:layout_gravity="center" />
+
+                        <ImageView
+                            android:id="@+id/photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+                    </FrameLayout>
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:id="@+id/meta_bar"
@@ -74,6 +91,36 @@
                         android:textColor="#8fff" />
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/cn_tag_fragment_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.huhx0015.xyzreader.ui.MaxWidthLinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:maxWidth="@dimen/detail_card_max_width"
+                android:background="#fff"
+                android:elevation="2dp"
+                android:layout_marginTop="@dimen/detail_card_top_margin">
+
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/article_body"
                     style="@style/TextAppearance.AppCompat.Body1"
@@ -88,8 +135,8 @@
                     android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
 
             </com.huhx0015.xyzreader.ui.MaxWidthLinearLayout>
-        </FrameLayout>
-    </com.huhx0015.xyzreader.ui.ObservableScrollView>
+
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
@@ -104,5 +151,5 @@
         android:stateListAnimator="@anim/fab_state_list_anim" />
  />
 
-</com.huhx0015.xyzreader.ui.DrawInsetsFrameLayout>
+</android.support.design.widget.CoordinatorLayout>
 <!-- From: file:/C:/Users/Michael%20Yoon%20Huh/Development/Android/Projects/XYZ_Reader/XYZReader/src/main/res/layout/fragment_article_detail.xml -->

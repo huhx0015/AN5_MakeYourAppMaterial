@@ -23,7 +23,6 @@ import com.huhx0015.xyzreader.data.ItemsContract;
 import com.huhx0015.xyzreader.data.UpdaterService;
 import com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
-import com.squareup.picasso.Picasso;
 
 /** -----------------------------------------------------------------------------------------------
  * [ArticleListActivity] CLASS
@@ -176,7 +175,7 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         public ViewHolder(View view) {
             super(view);
             thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
-            titleView = (AppCompatTextView) view.findViewById(R.id.article_title);
+            titleView = (AppCompatTextView) view.findViewById(R.id.fragment_article_detail_title);
             subtitleView = (AppCompatTextView) view.findViewById(R.id.article_subtitle);
         }
     }
