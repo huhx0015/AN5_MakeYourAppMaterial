@@ -19,6 +19,8 @@ import com.huhx0015.xyzreader.R;
 import com.huhx0015.xyzreader.data.ArticleLoader;
 import com.huhx0015.xyzreader.data.ItemsContract;
 import com.huhx0015.xyzreader.fragments.ArticleDetailFragment;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /** -----------------------------------------------------------------------------------------------
  *  [ArticleDetailActivity] CLASS
@@ -38,28 +40,33 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
     private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
     private int mTopInset;
 
-    // VIEW VARIABLES
-    private ViewPager mPager;
+    // PAGER VARIABLES
     private MyPagerAdapter mPagerAdapter;
-    private View mUpButtonContainer;
-    private View mUpButton;
+
+    // VIEW INJECTION VARIABLES
+    @Bind(R.id.pager) ViewPager mPager;
+    @Bind(R.id.up_container) View mUpButtonContainer;
+    @Bind(R.id.action_up) View mUpButton;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
+
         setContentView(R.layout.activity_article_detail);
+        ButterKnife.bind(this);
 
         getLoaderManager().initLoader(0, null, this);
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
-        mPager = (ViewPager) findViewById(R.id.pager);
+
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
@@ -84,9 +91,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
             }
         });
 
-        mUpButtonContainer = findViewById(R.id.up_container);
 
-        mUpButton = findViewById(R.id.action_up);
         mUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

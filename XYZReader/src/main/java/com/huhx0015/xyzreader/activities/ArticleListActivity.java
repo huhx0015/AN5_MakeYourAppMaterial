@@ -23,10 +23,12 @@ import com.huhx0015.xyzreader.data.ItemsContract;
 import com.huhx0015.xyzreader.data.UpdaterService;
 import com.huhx0015.xyzreader.ui.DynamicHeightNetworkImageView;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /** -----------------------------------------------------------------------------------------------
  * [ArticleListActivity] CLASS
- * DESCRIPTION:  An activity representing a list of Articles. This activity has different
+ * DESCRIPTION: An activity representing a list of Articles. This activity has different
  * presentations for handset and tablet-size devices. On handsets, the activity presents a list of
  * items, which when touched, lead to a {@link ArticleDetailActivity} representing item details. On
  * tablets, the activity presents a grid of items as cards.
@@ -34,32 +36,29 @@ import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
  */
 public class ArticleListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private Toolbar mToolbar;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private RecyclerView mRecyclerView;
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // LAYOUT VARIABLES
+    private boolean mIsRefreshing = false;
+
+    // VIEW INJECTION VARIABLES
+    @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
+    @Bind(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.toolbar_container) View mToolbarContainerView;
+
+    /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
-
-        final View toolbarContainerView = findViewById(R.id.toolbar_container);
-
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        ButterKnife.bind(this);
         getLoaderManager().initLoader(0, null, this);
 
         if (savedInstanceState == null) {
             refresh();
         }
-    }
-
-    private void refresh() {
-        startService(new Intent(this, UpdaterService.class));
     }
 
     @Override
@@ -75,7 +74,17 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         unregisterReceiver(mRefreshingReceiver);
     }
 
-    private boolean mIsRefreshing = false;
+    /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    private void refresh() {
+        startService(new Intent(this, UpdaterService.class));
+    }
+
+    private void updateRefreshingUI() {
+        mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
+    }
+
+    /** LOADER METHODS _________________________________________________________________________ **/
 
     private BroadcastReceiver mRefreshingReceiver = new BroadcastReceiver() {
         @Override
@@ -86,10 +95,6 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
             }
         }
     };
-
-    private void updateRefreshingUI() {
-        mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
-    }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
@@ -111,6 +116,8 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     public void onLoaderReset(Loader<Cursor> loader) {
         mRecyclerView.setAdapter(null);
     }
+
+    /** SUBCLASSES _____________________________________________________________________________ **/
 
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
         private Cursor mCursor;

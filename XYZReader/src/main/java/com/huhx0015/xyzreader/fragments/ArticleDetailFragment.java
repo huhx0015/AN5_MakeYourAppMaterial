@@ -71,12 +71,13 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     @Bind(R.id.fragment_article_detail_byline) AppCompatTextView mBylineView;
     @Bind(R.id.fragment_article_detail_title) AppCompatTextView mTitleView;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+    /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
+
+    // ArticleDetailFragment(): Mandatory empty constructor for the fragment manager to instantiate
+    // the fragment (e.g. upon screen orientation changes).
     public ArticleDetailFragment() {}
 
+    // newInstance(): Creates an instance of this Fragment.
     public static ArticleDetailFragment newInstance(long itemId) {
         Bundle arguments = new Bundle();
         arguments.putLong(ARG_ITEM_ID, itemId);
@@ -84,6 +85,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         fragment.setArguments(arguments);
         return fragment;
     }
+
+    /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,24 +102,9 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         setHasOptionsMenu(true);
     }
 
-    public ArticleDetailActivity getActivityCast() {
-        return (ArticleDetailActivity) getActivity();
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        // In support library r8, calling initLoader for a fragment in a FragmentPagerAdapter in
-        // the fragment's onCreate may cause the same LoaderManager to be dealt to multiple
-        // fragments because their mIndex is -1 (haven't been added to the activity yet). Thus,
-        // we do this in onActivityCreated.
-        getLoaderManager().initLoader(0, null, this);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         ButterKnife.bind(this, mRootView);
 
@@ -163,6 +151,21 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this); // Sets all injected views to null.
+    }
+
+    public ArticleDetailActivity getActivityCast() {
+        return (ArticleDetailActivity) getActivity();
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        // In support library r8, calling initLoader for a fragment in a FragmentPagerAdapter in
+        // the fragment's onCreate may cause the same LoaderManager to be dealt to multiple
+        // fragments because their mIndex is -1 (haven't been added to the activity yet). Thus,
+        // we do this in onActivityCreated.
+        getLoaderManager().initLoader(0, null, this);
     }
 
     private void updateStatusBar() {
