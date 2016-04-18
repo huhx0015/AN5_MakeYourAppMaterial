@@ -50,33 +50,35 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     // ARTICLE VARIABLES
     private String mArticleName;
 
+    // CURSOR VARIABLES
+    private Cursor mCursor;
+    private long mItemId;
+
     // LOGGING VARIABLES
     private static final String LOG_TAG = ArticleDetailFragment.class.getSimpleName();
 
-    public static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
-
-    private Cursor mCursor;
-    private long mItemId;
-    private View mRootView;
-    private int mMutedColor = 0xFF333333;
+    // META BAR VARIABLES
     private ColorDrawable mStatusBarColorDrawable;
+    private int mMutedColor = 0xFF333333;
+    public static final String ARG_ITEM_ID = "item_id";
 
-    private int mTopInset;
-    private int mScrollY;
+    // VIEW VARIABLES
+    private static final float PARALLAX_FACTOR = 1.25f;
     private boolean mIsCard = false;
+    private int mScrollY;
     private int mStatusBarFullOpacityBottom;
+    private int mTopInset;
+    private View mRootView;
 
     // VIEW INJECTION VARIABLES
+    @Bind(R.id.fragment_article_detail_body) AppCompatTextView mBodyView;
+    @Bind(R.id.fragment_article_detail_byline) AppCompatTextView mBylineView;
+    @Bind(R.id.fragment_article_detail_title) AppCompatTextView mTitleView;
     @Bind(R.id.fragment_article_detail_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Bind(R.id.fragment_article_detail_layout) CoordinatorLayout mCoordinatorLayout;
     @Bind(R.id.fragment_article_detail_share_fab) FloatingActionButton mFloatingActionButton;
     @Bind(R.id.fragment_article_detail_photo) ImageView mPhotoView;
     @Bind(R.id.fragment_article_detail_scrollview) NestedScrollView mScrollView;
-//    @Bind(R.id.fragment_article_detail_photo_container) View mPhotoContainerView;
-    @Bind(R.id.fragment_article_detail_body) AppCompatTextView mBodyView;
-    @Bind(R.id.fragment_article_detail_byline) AppCompatTextView mBylineView;
-    @Bind(R.id.fragment_article_detail_title) AppCompatTextView mTitleView;
     @Bind(R.id.fragment_article_detail_toolbar) Toolbar mToolbar;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
@@ -262,8 +264,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             return;
         }
 
-        mBylineView.setMovementMethod(new LinkMovementMethod());
-        mBodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        //mBylineView.setMovementMethod(new LinkMovementMethod());
+        //mBodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -313,9 +315,9 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                     });
         } else {
             mRootView.setVisibility(View.GONE);
-            mTitleView.setText("N/A");
-            mBylineView.setText("N/A" );
-            mBodyView.setText("N/A");
+            //mTitleView.setText("N/A");
+            //mBylineView.setText("N/A" );
+            //mBodyView.setText("N/A");
         }
     }
 
