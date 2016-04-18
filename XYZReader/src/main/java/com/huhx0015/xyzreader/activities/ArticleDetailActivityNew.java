@@ -121,6 +121,8 @@ public class ArticleDetailActivityNew extends AppCompatActivity {
 
         // Sets the attributes for the collapsing toolbar layout.
         mCollapsingToolbarLayout.setTitle("TEST ARTICLE");
-        mCollapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.meta_bar_color));
+        mCollapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
+        mCollapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.meta_bar_color));
+        mCollapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.meta_bar_color));
     }
 }
