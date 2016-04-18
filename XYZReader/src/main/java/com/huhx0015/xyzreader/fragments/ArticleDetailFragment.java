@@ -113,7 +113,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
+//        mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_article_detail_new, container, false);
         ButterKnife.bind(this, mRootView);
 
 //        mCoordinatorLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
@@ -217,13 +218,13 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     // initToolbar(): Sets up the Toolbar for the fragment.
     private void initToolbar() {
 
-        mToolbar.setTitle(mArticleName);
-        mCollapsingToolbarLayout.setTitle(mArticleName);
-
         getActivityCast().setSupportActionBar(mToolbar);
         getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enables the back button on the tagActionBar.
         getActivityCast().getSupportActionBar().setHomeButtonEnabled(true);
         getActivityCast().getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        // Sets the attributes for the collapsing toolbar layout.
+        mCollapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
     }
 
 
@@ -282,6 +283,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             + "</font>"));
             mBodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
 
+            // Sets the article name in the Toolbar and CollapsingToolbarLayout.
+            mToolbar.setTitle(mArticleName);
+            mCollapsingToolbarLayout.setTitle(mArticleName);
+
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -293,6 +298,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.fragment_article_detail_meta_bar)
                                         .setBackgroundColor(mMutedColor);
+
+                                mCollapsingToolbarLayout.setContentScrimColor(mMutedColor);
+                                mCollapsingToolbarLayout.setStatusBarScrimColor(mMutedColor);
+
                                 updateStatusBar();
                             }
                         }

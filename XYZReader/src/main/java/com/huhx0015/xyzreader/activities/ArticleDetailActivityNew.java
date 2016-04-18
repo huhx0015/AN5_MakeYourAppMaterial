@@ -5,7 +5,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -23,13 +22,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.huhx0015.xyzreader.R;
 import com.huhx0015.xyzreader.data.ArticleLoader;
 import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
