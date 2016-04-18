@@ -9,7 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/fragment_article_detail_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="296dp"
+        android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true">
 
@@ -28,6 +28,39 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:id="@+id/fragment_article_detail_collapsing_toolbar_container">
+
+                <FrameLayout
+                    android:id="@+id/fragment_article_detail_photo_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="parallax">
+
+                    <View
+                        android:id="@+id/fragment_article_detail_photo_container_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="144dp" />
+
+                    <FrameLayout
+                        android:id="@+id/fragment_article_detail_photo_subcontainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/fragment_article_detail_photo_progress_bar"
+                            android:layout_gravity="center" />
+
+                        <ImageView
+                            android:id="@+id/fragment_article_detail_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+                    </FrameLayout>
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:id="@+id/fragment_article_detail_meta_bar"
@@ -61,37 +94,6 @@
                         android:layout_height="wrap_content"
                         android:textColor="#8fff" />
                 </LinearLayout>
-
-                <FrameLayout
-                    android:id="@+id/fragment_article_detail_photo_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <View
-                        android:id="@+id/fragment_article_detail_photo_container_background"
-                        android:layout_width="match_parent"
-                        android:layout_height="144dp" />
-
-                    <FrameLayout
-                        android:id="@+id/fragment_article_detail_photo_subcontainer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center">
-
-                        <ProgressBar
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/fragment_article_detail_photo_progress_bar"
-                            android:layout_gravity="center" />
-
-                        <ImageView
-                            android:id="@+id/fragment_article_detail_photo"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop" />
-                    </FrameLayout>
-
-                </FrameLayout>
 
             </LinearLayout>
 

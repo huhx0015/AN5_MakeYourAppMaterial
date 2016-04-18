@@ -157,6 +157,16 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
                             DateUtils.FORMAT_ABBREV_ALL).toString()
                             + " by "
                             + mCursor.getString(ArticleLoader.Query.AUTHOR));
+
+//            Picasso.with(ArticleListActivity.this)
+//                    .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
+//                    .into(holder.thumbnailView);
+//
+//            Glide.with(ArticleListActivity.this)
+//                    .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
+//                    .fitCenter()
+//                    .into(holder.thumbnailView);
+
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());

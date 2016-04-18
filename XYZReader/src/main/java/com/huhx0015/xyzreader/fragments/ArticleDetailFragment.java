@@ -10,12 +10,14 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
@@ -45,6 +47,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
+    // ARTICLE VARIABLES
+    private String mArticleName;
+
+    // LOGGING VARIABLES
     private static final String LOG_TAG = ArticleDetailFragment.class.getSimpleName();
 
     public static final String ARG_ITEM_ID = "item_id";
@@ -62,14 +68,16 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     private int mStatusBarFullOpacityBottom;
 
     // VIEW INJECTION VARIABLES
+    @Bind(R.id.fragment_article_detail_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Bind(R.id.fragment_article_detail_layout) CoordinatorLayout mCoordinatorLayout;
     @Bind(R.id.fragment_article_detail_share_fab) FloatingActionButton mFloatingActionButton;
     @Bind(R.id.fragment_article_detail_photo) ImageView mPhotoView;
     @Bind(R.id.fragment_article_detail_scrollview) NestedScrollView mScrollView;
-    @Bind(R.id.fragment_article_detail_photo_container) View mPhotoContainerView;
+//    @Bind(R.id.fragment_article_detail_photo_container) View mPhotoContainerView;
     @Bind(R.id.fragment_article_detail_body) AppCompatTextView mBodyView;
     @Bind(R.id.fragment_article_detail_byline) AppCompatTextView mBylineView;
     @Bind(R.id.fragment_article_detail_title) AppCompatTextView mTitleView;
+    @Bind(R.id.fragment_article_detail_toolbar) Toolbar mToolbar;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
@@ -127,7 +135,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 //        });
 
 
-
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -142,19 +149,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
         bindViews();
         updateStatusBar();
+
+        initToolbar(); // Initializes the Toolbar and CollapsingToolbarLayout.
+
         return mRootView;
-    }
-
-    // onDestroyView(): This function runs when the screen is no longer visible and the view is
-    // destroyed.
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this); // Sets all injected views to null.
-    }
-
-    public ArticleDetailActivity getActivityCast() {
-        return (ArticleDetailActivity) getActivity();
     }
 
     @Override
@@ -167,6 +165,67 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         // we do this in onActivityCreated.
         getLoaderManager().initLoader(0, null, this);
     }
+
+    // onDestroyView(): This function runs when the screen is no longer visible and the view is
+    // destroyed.
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this); // Sets all injected views to null.
+    }
+
+    /** LOADER METHODS _________________________________________________________________________ **/
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+        if (!isAdded()) {
+            if (cursor != null) {
+                cursor.close();
+            }
+            return;
+        }
+
+        mCursor = cursor;
+        if (mCursor != null && !mCursor.moveToFirst()) {
+            Log.e(LOG_TAG, "Error reading item detail cursor");
+            mCursor.close();
+            mCursor = null;
+        }
+
+        bindViews();
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+        mCursor = null;
+        bindViews();
+    }
+
+    /** ACTIVITY METHODS _______________________________________________________________________ **/
+
+    public ArticleDetailActivity getActivityCast() {
+        return (ArticleDetailActivity) getActivity();
+    }
+
+    /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    // initToolbar(): Sets up the Toolbar for the fragment.
+    private void initToolbar() {
+
+        mToolbar.setTitle(mArticleName);
+        mCollapsingToolbarLayout.setTitle(mArticleName);
+
+        getActivityCast().setSupportActionBar(mToolbar);
+        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enables the back button on the tagActionBar.
+        getActivityCast().getSupportActionBar().setHomeButtonEnabled(true);
+        getActivityCast().getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
 
     private void updateStatusBar() {
         int color = 0;
@@ -209,7 +268,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            mTitleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
+
+            // Sets the article name, subtitle, and body text.
+            mArticleName = mCursor.getString(ArticleLoader.Query.TITLE);
+            mTitleView.setText(mArticleName);
             mBylineView.setText(Html.fromHtml(
                     DateUtils.getRelativeTimeSpanString(
                             mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
@@ -219,6 +281,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)
                             + "</font>"));
             mBodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
+
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -247,44 +310,14 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         }
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        if (!isAdded()) {
-            if (cursor != null) {
-                cursor.close();
-            }
-            return;
-        }
-
-        mCursor = cursor;
-        if (mCursor != null && !mCursor.moveToFirst()) {
-            Log.e(LOG_TAG, "Error reading item detail cursor");
-            mCursor.close();
-            mCursor = null;
-        }
-
-        bindViews();
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        mCursor = null;
-        bindViews();
-    }
-
-    public int getUpButtonFloor() {
-        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-            return Integer.MAX_VALUE;
-        }
-
-        // account for parallax
-        return mIsCard
-                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-                : mPhotoView.getHeight() - mScrollY;
-    }
+//    public int getUpButtonFloor() {
+//        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
+//            return Integer.MAX_VALUE;
+//        }
+//
+//        // account for parallax
+//        return mIsCard
+//                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
+//                : mPhotoView.getHeight() - mScrollY;
+//    }
 }

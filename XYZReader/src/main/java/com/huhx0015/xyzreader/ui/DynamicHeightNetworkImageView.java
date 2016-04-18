@@ -2,11 +2,12 @@ package com.huhx0015.xyzreader.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
 import com.android.volley.toolbox.NetworkImageView;
 
 /** -----------------------------------------------------------------------------------------------
- * [DynamicHeighNetworkImageView] CLASS
+ *  [DynamicHeightNetworkImageView] CLASS
+ *  DESCRIPTION: This class extends the NetworkImageView class in Volley, making it possible to set
+ *  the size of the NetworkImageView to the aspect ratio of the requested image.
  *  -----------------------------------------------------------------------------------------------
  */
 public class DynamicHeightNetworkImageView extends NetworkImageView {
