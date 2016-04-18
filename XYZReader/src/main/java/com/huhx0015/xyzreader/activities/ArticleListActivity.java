@@ -45,7 +45,7 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
     @Bind(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.toolbar_container) View mToolbarContainerView;
+    //@Bind(R.id.toolbar_container) View mToolbarContainerView;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
@@ -59,6 +59,8 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         if (savedInstanceState == null) {
             refresh();
         }
+
+        initToolbar();
     }
 
     @Override
@@ -75,6 +77,10 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    private void initToolbar() {
+        mToolbar.setLogo(R.drawable.logo);
+    }
 
     private void refresh() {
         startService(new Intent(this, UpdaterService.class));
