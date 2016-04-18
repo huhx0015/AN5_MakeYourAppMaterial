@@ -1,5 +1,11 @@
 package com.huhx0015.xyzreader.activities;
 
+import android.app.LoaderManager;
+import android.content.Loader;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,11 +13,23 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.format.DateUtils;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.huhx0015.xyzreader.R;
+import com.huhx0015.xyzreader.data.ArticleLoader;
+import com.huhx0015.xyzreader.ui.ImageLoaderHelper;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -21,9 +39,23 @@ import butterknife.ButterKnife;
  *  letting you swipe between articles.
  *  -----------------------------------------------------------------------------------------------
  */
-public class ArticleDetailActivityNew extends AppCompatActivity {
+public class ArticleDetailActivityNew extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // ARTICLE VARIABLES
+    private String mArticleName;
+    public static final String ARG_ITEM_ID = "item_id";
+
+    // CURSOR VARIABLES
+    private Cursor mCursor;
+    private long mItemId;
+
+    // METABAR VARIABLES
+    private int mMutedColor = 0xFF333333;
+
+    // LOGGING VARIABLES
+    private static final String LOG_TAG = ArticleDetailActivityNew.class.getSimpleName();
 
     // VIEW INJECTION VARIABLES
     @Bind(R.id.activity_article_detail_body) AppCompatTextView mBodyView;
@@ -32,6 +64,7 @@ public class ArticleDetailActivityNew extends AppCompatActivity {
     @Bind(R.id.activity_article_detail_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Bind(R.id.activity_article_detail_layout) CoordinatorLayout mCoordinatorLayout;
     @Bind(R.id.activity_article_detail_share_fab) FloatingActionButton mFloatingActionButton;
+    @Bind(R.id.activity_article_detail_meta_bar) LinearLayout mMetabar;
     @Bind(R.id.activity_article_detail_photo) ImageView mPhotoView;
     @Bind(R.id.activity_article_detail_scrollview) NestedScrollView mScrollView;
     @Bind(R.id.activity_article_detail_toolbar) Toolbar mToolbar;
@@ -54,6 +87,10 @@ public class ArticleDetailActivityNew extends AppCompatActivity {
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
 
+//        if (savedInstanceState.containsKey(ARG_ITEM_ID)) {
+//            mItemId = savedInstanceState.getLong(ARG_ITEM_ID);
+//        }
+
         initMetabar(); // Sets the article text and subtitle.
         initToolbar(); // Sets the attributes for the Toolbar and CollapsingToolbarLayout.
     }
@@ -72,35 +109,32 @@ public class ArticleDetailActivityNew extends AppCompatActivity {
 
     /** LOADER METHODS _________________________________________________________________________ **/
 
-//    @Override
-//    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-//        return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
-//    }
-//
-//    @Override
-//    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-//        if (!isAdded()) {
-//            if (cursor != null) {
-//                cursor.close();
-//            }
-//            return;
-//        }
-//
-//        mCursor = cursor;
-//        if (mCursor != null && !mCursor.moveToFirst()) {
-//            Log.e(LOG_TAG, "Error reading item detail cursor");
-//            mCursor.close();
-//            mCursor = null;
-//        }
-//
-//        bindViews();
-//    }
-//
-//    @Override
-//    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-//        mCursor = null;
-//        bindViews();
-//    }
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        return ArticleLoader.newInstanceForItemId(this, mItemId);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        mCursor = cursor;
+        if (mCursor != null && !mCursor.moveToFirst()) {
+            Log.e(LOG_TAG, "Error reading item detail cursor");
+            mCursor.close();
+            mCursor = null;
+        }
+
+        bindViews();
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+        mCursor = null;
+        bindViews();
+    }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
@@ -124,5 +158,55 @@ public class ArticleDetailActivityNew extends AppCompatActivity {
         mCollapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         mCollapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.meta_bar_color));
         mCollapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.meta_bar_color));
+    }
+
+    private void bindViews() {
+
+        mBylineView.setMovementMethod(new LinkMovementMethod());
+        mBodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+
+        if (mCursor != null) {
+
+            // Sets the article name, subtitle, and body text.
+            mArticleName = mCursor.getString(ArticleLoader.Query.TITLE);
+            mTitleView.setText(mArticleName);
+            mBylineView.setText(Html.fromHtml(
+                    DateUtils.getRelativeTimeSpanString(
+                            mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
+                            System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
+                            DateUtils.FORMAT_ABBREV_ALL).toString()
+                            + " by <font color='#ffffff'>"
+                            + mCursor.getString(ArticleLoader.Query.AUTHOR)
+                            + "</font>"));
+            mBodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
+
+            ImageLoaderHelper.getInstance(this).getImageLoader()
+                    .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
+                        @Override
+                        public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
+                            Bitmap bitmap = imageContainer.getBitmap();
+                            if (bitmap != null) {
+
+                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
+
+                                // Sets the color of the metabar and the collapsing toolbar layout.
+                                Palette p = Palette.generate(bitmap, 12);
+                                mMutedColor = p.getDarkMutedColor(0xFF333333);
+                                mMetabar.setBackgroundColor(mMutedColor);
+                                mCollapsingToolbarLayout.setContentScrimColor(mMutedColor);
+                                mCollapsingToolbarLayout.setStatusBarScrimColor(mMutedColor);
+                            }
+                        }
+
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+
+                        }
+                    });
+        } else {
+            mTitleView.setText("N/A");
+            mBylineView.setText("N/A" );
+            mBodyView.setText("N/A");
+        }
     }
 }
