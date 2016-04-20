@@ -6,6 +6,7 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -124,28 +125,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         mRootView = inflater.inflate(R.layout.fragment_article_detail_new, container, false);
         ButterKnife.bind(this, mRootView);
-
-//        mCoordinatorLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-//            @Override
-//            public void onInsetsChanged(Rect insets) {
-//                mTopInset = insets.top;
-//            }
-//        });
-
-
-//        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-//            @Override
-//            public void onScrollChanged() {
-//                mScrollY = mScrollView.getScrollY();
-//                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-//                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-//                updateStatusBar();
-//            }
-//        });
-
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -162,6 +143,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         bindViews();
         updateStatusBar();
 
+        initButtons();
         initToolbar(); // Initializes the Toolbar and CollapsingToolbarLayout.
 
         return mRootView;
@@ -237,6 +219,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    private void initButtons() {
+        mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.theme_accent)));
+    }
 
     // initToolbar(): Sets up the Toolbar for the fragment.
     private void initToolbar() {
@@ -341,15 +327,4 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             //mBodyView.setText("N/A");
         }
     }
-
-//    public int getUpButtonFloor() {
-//        if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
-//            return Integer.MAX_VALUE;
-//        }
-//
-//        // account for parallax
-//        return mIsCard
-//                ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
-//                : mPhotoView.getHeight() - mScrollY;
-//    }
 }

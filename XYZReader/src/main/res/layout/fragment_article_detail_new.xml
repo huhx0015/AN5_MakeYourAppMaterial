@@ -137,8 +137,6 @@
         android:stateListAnimator="@anim/fab_state_list_anim"
         app:layout_anchor="@+id/fragment_article_detail_app_bar"
         app:layout_anchorGravity="bottom|right|end"
-        app:backgroundTint="@android:color/white"
-        app:rippleColor="@color/theme_primary_dark"
         app:elevation="@dimen/fab_shadow_size"/>
 
 </android.support.design.widget.CoordinatorLayout>
