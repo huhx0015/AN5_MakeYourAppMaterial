@@ -28,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:id="@+id/fragment_article_detail_collapsing_toolbar_container">
+                android:id="@+id/fragment_article_detail_collapsing_toolbar_container"
+                android:gravity="center">
 
                 <FrameLayout
                     android:id="@+id/fragment_article_detail_photo_container"
@@ -56,19 +57,19 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="112dp"
-                    android:padding="8dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/fragment_article_detail_meta_bar"
                     android:background="@color/meta_bar_color"
-                    android:layout_gravity="bottom"
                     android:paddingLeft="@dimen/detail_inner_horiz_margin"
                     android:paddingRight="@dimen/detail_inner_horiz_margin"
-                    android:paddingTop="@dimen/detail_metabar_vert_padding">
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/fragment_article_detail_title"
-                        style="@style/TextAppearance.AppCompat.Headline"
-                        android:layout_width="fill_parent"
+                        android:layout_width="284dp"
                         android:layout_height="match_parent"
                         android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
                         android:fontFamily="sans-serif-condensed"
@@ -76,15 +77,18 @@
                         android:textStyle="bold"
                         android:textSize="@dimen/detail_title_text_size"
                         android:lineSpacingMultiplier="0.9"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        style="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_gravity="left" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/fragment_article_detail_byline"
                         style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_width="fill_parent"
+                        android:layout_width="284dp"
                         android:layout_height="match_parent"
                         android:textColor="#8fff"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:layout_gravity="left" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -119,7 +123,8 @@
             android:textColor="@android:color/black"
             android:textColorLink="@color/theme_accent"
             android:textSize="@dimen/detail_body_text_size"
-            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
+            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
+            android:typeface="sans" />
 
     </android.support.v4.widget.NestedScrollView>
 
@@ -128,7 +133,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
         android:layout_gravity="right|end"
         android:background="@drawable/add_fab_background"
         android:src="@drawable/ic_share"
@@ -137,6 +141,6 @@
         android:stateListAnimator="@anim/fab_state_list_anim"
         app:layout_anchor="@+id/fragment_article_detail_app_bar"
         app:layout_anchorGravity="bottom|right|end"
-        app:elevation="@dimen/fab_shadow_size"/>
+        app:elevation="@dimen/fab_shadow_size" />
 
 </android.support.design.widget.CoordinatorLayout>
