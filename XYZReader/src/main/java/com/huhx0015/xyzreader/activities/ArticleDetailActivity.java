@@ -12,6 +12,7 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
@@ -65,31 +66,9 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
         getLoaderManager().initLoader(0, null, this);
 
-        mPagerAdapter = new MyPagerAdapter(getFragmentManager());
+        initPager(); // Initializes the pager.
 
-        mPager.setAdapter(mPagerAdapter);
-        mPager.setPageMargin((int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
-        mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
 
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                super.onPageScrollStateChanged(state);
-//                mUpButton.animate()
-//                        .alpha((state == ViewPager.SCROLL_STATE_IDLE) ? 1f : 0f)
-//                        .setDuration(300);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if (mCursor != null) {
-                    mCursor.moveToPosition(position);
-                }
-                mSelectedItemId = mCursor.getLong(ArticleLoader.Query._ID);
-                updateUpButtonPosition();
-            }
-        });
 
 
 //        mUpButton.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +99,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         }
     }
 
-    /** OVERRIDE METHODS _______________________________________________________________________ **/
+    /** LOADER METHODS _________________________________________________________________________ **/
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
@@ -160,6 +139,39 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 //            updateUpButtonPosition();
 //        }
 //    }
+
+    /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    private void initPager() {
+
+        mPagerAdapter = new MyPagerAdapter(getFragmentManager());
+
+        mPager.setAdapter(mPagerAdapter);
+        mPager.setPageMargin((int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
+        mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
+
+        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+//                mUpButton.animate()
+//                        .alpha((state == ViewPager.SCROLL_STATE_IDLE) ? 1f : 0f)
+//                        .setDuration(300);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (mCursor != null) {
+                    mCursor.moveToPosition(position);
+                }
+                mSelectedItemId = mCursor.getLong(ArticleLoader.Query._ID);
+
+                // TODO: Set Toolbar to be set to the focused fragment.
+                updateUpButtonPosition();
+            }
+        });
+    }
 
     private void updateUpButtonPosition() {
 //        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();

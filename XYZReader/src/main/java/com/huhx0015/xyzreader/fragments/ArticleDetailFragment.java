@@ -1,7 +1,9 @@
 package com.huhx0015.xyzreader.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -23,6 +25,7 @@ import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -46,6 +49,9 @@ import butterknife.ButterKnife;
 public class ArticleDetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // ACTIVITY VARIABLES
+    private ArticleDetailActivity mArticleDetailActivity;
 
     // ARTICLE VARIABLES
     private String mArticleName;
@@ -101,6 +107,9 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Sets a reference to the attached activity.
+        mArticleDetailActivity = (ArticleDetailActivity) getActivity();
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             mItemId = getArguments().getLong(ARG_ITEM_ID);
@@ -175,6 +184,17 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this); // Sets all injected views to null.
+    }
+
+    /** ACTIVITY OVERRIDE METHODS ______________________________________________________________ **/
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mArticleDetailActivity.onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /** LOADER METHODS _________________________________________________________________________ **/
