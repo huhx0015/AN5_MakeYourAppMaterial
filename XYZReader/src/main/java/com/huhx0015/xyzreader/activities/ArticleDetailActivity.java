@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -196,6 +197,9 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         @Override
         public Fragment getItem(int position) {
             mCursor.moveToPosition(position);
+
+            Log.d(ArticleDetailFragment.class.getSimpleName(), "Fragment changed to " + position);
+
             return ArticleDetailFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
         }
 

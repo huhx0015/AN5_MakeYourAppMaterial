@@ -193,6 +193,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         switch (item.getItemId()) {
             case android.R.id.home:
                 mArticleDetailActivity.onBackPressed();
+                Log.d(ArticleDetailFragment.class.getSimpleName(), "BACK PRESSED!");
         }
         return super.onOptionsItemSelected(item);
     }
