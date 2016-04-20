@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:1:1-61:12
+ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:1:1-48:12
 	package
 		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:2:5-37
 	android:versionName
@@ -30,7 +30,7 @@ ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZ
 	android:name
 		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:9:22-76
 application
-ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:11:5-59:19
+ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:11:5-46:19
 MERGED from [com.android.support:design:23.1.1] C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\build\intermediates\exploded-aar\com.android.support\design\23.1.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\AndroidManifest.xml:22:5-20
@@ -96,19 +96,19 @@ ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZ
 	android:name
 		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:35:17-63
 service#com.huhx0015.xyzreader.data.UpdaterService
-ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:52:9-53:40
+ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:39:9-40:40
 	android:exported
-		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:53:13-37
+		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:40:13-37
 	android:name
-		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:52:18-75
+		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:39:18-75
 provider#com.huhx0015.xyzreader.data.ItemsProvider
-ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:55:9-57:40
+ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:42:9-44:40
 	android:authorities
-		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:56:13-57
+		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:43:13-57
 	android:exported
-		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:57:13-37
+		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:44:13-37
 	android:name
-		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:55:19-75
+		ADDED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml:42:19-75
 uses-sdk
 INJECTED from C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:23.1.1] C:\Users\Michael Yoon Huh\Development\Android\Projects\XYZ_Reader\XYZReader\build\intermediates\exploded-aar\com.android.support\design\23.1.1\AndroidManifest.xml:20:5-43

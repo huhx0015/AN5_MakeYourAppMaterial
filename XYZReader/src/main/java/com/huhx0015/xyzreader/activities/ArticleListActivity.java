@@ -45,7 +45,6 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
     @Bind(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.toolbar) Toolbar mToolbar;
-    //@Bind(R.id.toolbar_container) View mToolbarContainerView;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
@@ -163,16 +162,6 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
                             DateUtils.FORMAT_ABBREV_ALL).toString()
                             + " by "
                             + mCursor.getString(ArticleLoader.Query.AUTHOR));
-
-//            Picasso.with(ArticleListActivity.this)
-//                    .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
-//                    .into(holder.thumbnailView);
-//
-//            Glide.with(ArticleListActivity.this)
-//                    .load(mCursor.getString(ArticleLoader.Query.THUMB_URL))
-//                    .fitCenter()
-//                    .into(holder.thumbnailView);
-
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());

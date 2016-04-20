@@ -36,19 +36,6 @@
                 android:value=".activities.ArticleListActivity" />
         </activity>
 
-        <!--<activity-->
-            <!--android:name=".activities.ArticleDetailActivityNew"-->
-            <!--android:parentActivityName=".activities.ArticleListActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<data android:mimeType="vnd.android.cursor.item/vnd.com.huhx0015.xyzreader.items" />-->
-            <!--</intent-filter>-->
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value=".activities.ArticleListActivity" />-->
-        <!--</activity>-->
-
         <service android:name="com.huhx0015.xyzreader.data.UpdaterService"
             android:exported="false" />
 
