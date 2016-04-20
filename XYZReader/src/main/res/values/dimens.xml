@@ -1,8 +1,18 @@
 <resources>
-    <!-- detail -->
+
+    <!--ARTICLE DIMENSIONS-->
     <dimen name="detail_title_text_size">32sp</dimen>
     <dimen name="detail_body_text_size">22sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
+
+    <!--CARD DIMENSIONS-->
+    <dimen name="card_margin">4dp</dimen>
+    <dimen name="card_raised_elevation">8dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
+    <dimen name="card_image_height">100dp</dimen>
+    <dimen name="card_header_top_left_right_margin">16dp</dimen>
+    <dimen name="card_header_bottom_margin">4dp</dimen>
+    <dimen name="card_subheader_margin">16dp</dimen>
 
     <!--FLOATING ACTION BUTTON DIMENSIONS-->
     <dimen name="fab_elevation">2dp</dimen>

@@ -35,8 +35,6 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
     private Cursor mCursor;
     private long mStartId;
     private long mSelectedItemId;
-    private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
-    private int mTopInset;
 
     // PAGER VARIABLES
     private MyPagerAdapter mPagerAdapter;
@@ -60,7 +58,6 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
         ButterKnife.bind(this);
 
         getLoaderManager().initLoader(0, null, this);
-
         initPager(); // Initializes the pager.
 
         if (savedInstanceState == null) {
@@ -129,6 +126,8 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
             }
         });
     }
+
+    /** SUBCLASSES _____________________________________________________________________________ **/
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {

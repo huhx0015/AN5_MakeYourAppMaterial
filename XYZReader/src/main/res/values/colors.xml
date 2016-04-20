@@ -21,7 +21,9 @@
     <color name="theme_primary">#2E7D32</color>
     <color name="theme_primary_dark">#1B5E20</color>
     <color name="theme_accent">#388E3C</color>
-    <color name="ltgray">#e0e0e0</color>
+
+    <!--ARTICLE COLOR VALUES-->
+    <color name="subtitle_color">#616161</color>
 
     <!--PHOTO BACKGROUND COLOR VALUES-->
     <color name="photo_placeholder">#ccc</color>

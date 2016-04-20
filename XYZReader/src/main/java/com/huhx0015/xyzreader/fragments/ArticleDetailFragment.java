@@ -11,10 +11,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
@@ -66,7 +64,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     public static final String ARG_ITEM_ID = "item_id";
 
     // VIEW VARIABLES
-    private static final float PARALLAX_FACTOR = 1.25f;
     private boolean mIsCard = false;
     private int mScrollY;
     private int mStatusBarFullOpacityBottom;
@@ -76,12 +73,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     // VIEW INJECTION VARIABLES
     @Bind(R.id.fragment_article_detail_body) AppCompatTextView mBodyView;
     @Bind(R.id.fragment_article_detail_byline) AppCompatTextView mBylineView;
-    @Bind(R.id.fragment_article_detail_title) AppCompatTextView mTitleView;
+    @Bind(R.id.list_item_detail_title) AppCompatTextView mTitleView;
     @Bind(R.id.fragment_article_detail_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
-    @Bind(R.id.fragment_article_detail_layout) CoordinatorLayout mCoordinatorLayout;
     @Bind(R.id.fragment_article_detail_share_fab) FloatingActionButton mFloatingActionButton;
     @Bind(R.id.fragment_article_detail_photo) ImageView mPhotoView;
-    @Bind(R.id.fragment_article_detail_scrollview) NestedScrollView mScrollView;
     @Bind(R.id.fragment_article_detail_toolbar) Toolbar mToolbar;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
@@ -126,20 +121,9 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
-                        .setType("text/plain")
-                        .setText("Some sample text")
-                        .getIntent(), getString(R.string.action_share)));
-            }
-        });
-
         bindViews();
         updateStatusBar();
-
-        initButtons();
+        initButtons(); // Initializes the buttons in this fragment.
         initToolbar(); // Initializes the Toolbar and CollapsingToolbarLayout.
 
         return mRootView;
@@ -171,7 +155,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
         switch (item.getItemId()) {
             case android.R.id.home:
                 mArticleDetailActivity.onBackPressed();
-                Log.d(ArticleDetailFragment.class.getSimpleName(), "BACK PRESSED!");
         }
         return super.onOptionsItemSelected(item);
     }
@@ -216,59 +199,10 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
-    private void initButtons() {
-        mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.theme_accent)));
-    }
-
-    // initToolbar(): Sets up the Toolbar for the fragment.
-    private void initToolbar() {
-
-        getActivityCast().setSupportActionBar(mToolbar);
-        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enables the back button on the tagActionBar.
-        getActivityCast().getSupportActionBar().setHomeButtonEnabled(true);
-        getActivityCast().getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        // Sets the attributes for the collapsing toolbar layout.
-        mCollapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-    }
-
-
-    private void updateStatusBar() {
-        int color = 0;
-        if (mPhotoView != null && mTopInset != 0 && mScrollY > 0) {
-            float f = progress(mScrollY,
-                    mStatusBarFullOpacityBottom - mTopInset * 3,
-                    mStatusBarFullOpacityBottom - mTopInset);
-            color = Color.argb((int) (255 * f),
-                    (int) (Color.red(mMutedColor) * 0.9),
-                    (int) (Color.green(mMutedColor) * 0.9),
-                    (int) (Color.blue(mMutedColor) * 0.9));
-        }
-        mStatusBarColorDrawable.setColor(color);
-        //mCoordinatorLayout.setInsetBackground(mStatusBarColorDrawable);
-    }
-
-    static float progress(float v, float min, float max) {
-        return constrain((v - min) / (max - min), 0, 1);
-    }
-
-    static float constrain(float val, float min, float max) {
-        if (val < min) {
-            return min;
-        } else if (val > max) {
-            return max;
-        } else {
-            return val;
-        }
-    }
-
     private void bindViews() {
         if (mRootView == null) {
             return;
         }
-
-        //mBylineView.setMovementMethod(new LinkMovementMethod());
-        //mBodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -304,6 +238,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                                 mRootView.findViewById(R.id.fragment_article_detail_meta_bar)
                                         .setBackgroundColor(mMutedColor);
 
+                                // Sets the CollapsingToolbarLayout attributes.
                                 mCollapsingToolbarLayout.setContentScrimColor(mMutedColor);
                                 mCollapsingToolbarLayout.setStatusBarScrimColor(mMutedColor);
 
@@ -313,14 +248,65 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
 
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-
+                            Log.e(LOG_TAG, "ERROR: Image failed to load: " + volleyError.getMessage());
                         }
                     });
         } else {
             mRootView.setVisibility(View.GONE);
-            //mTitleView.setText("N/A");
-            //mBylineView.setText("N/A" );
-            //mBodyView.setText("N/A");
         }
+    }
+
+    // initButtons(): Initializes the attributes for the buttons in this Fragment.
+    private void initButtons() {
+        mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.theme_accent)));
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
+                        .setType("text/plain")
+                        .setText("Some sample text")
+                        .getIntent(), getString(R.string.action_share)));
+            }
+        });
+    }
+
+    // initToolbar(): Sets up the Toolbar for the fragment.
+    private void initToolbar() {
+
+        getActivityCast().setSupportActionBar(mToolbar);
+        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enables the back button on the tagActionBar.
+        getActivityCast().getSupportActionBar().setHomeButtonEnabled(true);
+        getActivityCast().getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        // Sets the attributes for the collapsing toolbar layout.
+        mCollapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
+    }
+
+    static float constrain(float val, float min, float max) {
+        if (val < min) {
+            return min;
+        } else if (val > max) {
+            return max;
+        } else {
+            return val;
+        }
+    }
+
+    static float progress(float v, float min, float max) {
+        return constrain((v - min) / (max - min), 0, 1);
+    }
+
+    private void updateStatusBar() {
+        int color = 0;
+        if (mPhotoView != null && mTopInset != 0 && mScrollY > 0) {
+            float f = progress(mScrollY,
+                    mStatusBarFullOpacityBottom - mTopInset * 3,
+                    mStatusBarFullOpacityBottom - mTopInset);
+            color = Color.argb((int) (255 * f),
+                    (int) (Color.red(mMutedColor) * 0.9),
+                    (int) (Color.green(mMutedColor) * 0.9),
+                    (int) (Color.blue(mMutedColor) * 0.9));
+        }
+        mStatusBarColorDrawable.setColor(color);
     }
 }

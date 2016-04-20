@@ -2090,7 +2090,7 @@ containing a value of this type.
         public static final int highlighted_text_material_light=0x7f0c0026;
         public static final int hint_foreground_material_dark=0x7f0c0027;
         public static final int hint_foreground_material_light=0x7f0c0028;
-        public static final int ltgray=0x7f0c0029;
+        public static final int subtitle_color =0x7f0c0029;
         public static final int material_blue_grey_800=0x7f0c002a;
         public static final int material_blue_grey_900=0x7f0c002b;
         public static final int material_blue_grey_950=0x7f0c002c;
@@ -2363,8 +2363,8 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f0d003d;
         public static final int alertTitle=0x7f0d0049;
         public static final int always=0x7f0d0032;
-        public static final int article_progress_bar=0x7f0d0087;
-        public static final int article_subtitle=0x7f0d0089;
+        public static final int list_item_progress_bar =0x7f0d0087;
+        public static final int list_article_subtitle =0x7f0d0089;
         public static final int beginning=0x7f0d0030;
         public static final int bottom=0x7f0d001c;
         public static final int buttonPanel=0x7f0d0044;
@@ -2411,7 +2411,7 @@ containing a value of this type.
         public static final int fragment_article_detail_photo_progress_bar=0x7f0d007e;
         public static final int fragment_article_detail_scrollview=0x7f0d0084;
         public static final int fragment_article_detail_share_fab=0x7f0d0086;
-        public static final int fragment_article_detail_title=0x7f0d0081;
+        public static final int list_item_detail_title =0x7f0d0081;
         public static final int fragment_article_detail_toolbar=0x7f0d0083;
         public static final int home=0x7f0d0004;
         public static final int homeAsUp=0x7f0d000f;
@@ -2480,7 +2480,7 @@ containing a value of this type.
         public static final int text=0x7f0d0094;
         public static final int text2=0x7f0d0092;
         public static final int textSpacerNoButtons=0x7f0d004d;
-        public static final int thumbnail=0x7f0d0088;
+        public static final int list_item_thumbnail =0x7f0d0088;
         public static final int time=0x7f0d0090;
         public static final int title=0x7f0d0043;
         public static final int title_template=0x7f0d0048;
