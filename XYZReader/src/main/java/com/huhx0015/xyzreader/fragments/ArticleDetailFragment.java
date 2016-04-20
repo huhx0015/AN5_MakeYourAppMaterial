@@ -49,7 +49,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     private ArticleDetailActivity mArticleDetailActivity;
 
     // ARTICLE VARIABLES
-    private String mArticleName;
+    private String mArticleName = "XYZ Reader";
 
     // CURSOR VARIABLES
     private Cursor mCursor;
@@ -73,7 +73,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     // VIEW INJECTION VARIABLES
     @Bind(R.id.fragment_article_detail_body) AppCompatTextView mBodyView;
     @Bind(R.id.fragment_article_detail_byline) AppCompatTextView mBylineView;
-    @Bind(R.id.list_item_detail_title) AppCompatTextView mTitleView;
+    @Bind(R.id.fragment_article_detail_title) AppCompatTextView mTitleView;
     @Bind(R.id.fragment_article_detail_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Bind(R.id.fragment_article_detail_share_fab) FloatingActionButton mFloatingActionButton;
     @Bind(R.id.fragment_article_detail_photo) ImageView mPhotoView;
@@ -264,7 +264,8 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             public void onClick(View view) {
                 startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
                         .setType("text/plain")
-                        .setText("Some sample text")
+                        .setChooserTitle(getResources().getString(R.string.share_chooser_title))
+                        .setText(mArticleName)
                         .getIntent(), getString(R.string.action_share)));
             }
         });

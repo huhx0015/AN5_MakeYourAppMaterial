@@ -39,7 +39,7 @@
         </FrameLayout>
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/list_item_detail_title"
+            android:id="@+id/fragment_article_detail_title"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,7 +49,8 @@
             android:paddingBottom="@dimen/card_header_bottom_margin"
             android:textColor="@android:color/black"
             android:ellipsize="end"
-            android:maxLines="4" />
+            android:maxLines="4"
+            android:typeface="sans" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/list_article_subtitle"
@@ -62,7 +63,8 @@
             android:textColor="@color/subtitle_color"
             android:maxLines="1"
             android:singleLine="true"
-            android:ellipsize="end" />
+            android:ellipsize="end"
+            android:typeface="sans" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

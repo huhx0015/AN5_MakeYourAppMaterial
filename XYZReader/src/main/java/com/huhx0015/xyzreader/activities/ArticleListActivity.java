@@ -187,7 +187,7 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         public ViewHolder(View view) {
             super(view);
             thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.list_item_thumbnail);
-            titleView = (AppCompatTextView) view.findViewById(R.id.list_item_detail_title);
+            titleView = (AppCompatTextView) view.findViewById(R.id.fragment_article_detail_title);
             subtitleView = (AppCompatTextView) view.findViewById(R.id.list_article_subtitle);
         }
     }
