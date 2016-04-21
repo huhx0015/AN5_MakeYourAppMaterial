@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/fragment_article_detail_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="296dp"
+        android:layout_height="@dimen/detail_appbar_height"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true">
 
@@ -20,8 +20,8 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="@dimen/detail_collapsingtoolbar_margin_start"
+            app:expandedTitleMarginEnd="@dimen/detail_collapsingtoolbar_margin_end"
             android:fitsSystemWindows="true">
 
             <LinearLayout
@@ -64,12 +64,12 @@
                     android:paddingRight="@dimen/detail_inner_horiz_margin"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:paddingTop="@dimen/detail_metabar_vertical_padding"
+                    android:paddingBottom="@dimen/detail_metabar_vertical_padding">
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/fragment_article_detail_title"
-                        android:layout_width="284dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
                         android:fontFamily="sans-serif-condensed"
@@ -79,16 +79,16 @@
                         android:lineSpacingMultiplier="0.9"
                         android:layout_weight="1"
                         style="@style/TextAppearance.AppCompat.Headline"
-                        android:layout_gravity="left" />
+                        android:layout_gravity="start|left" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:id="@+id/fragment_article_detail_byline"
                         style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_width="284dp"
+                        android:layout_width="@dimen/detail_subtitle_width"
                         android:layout_height="match_parent"
-                        android:textColor="#8fff"
+                        android:textColor="@color/article_subtitle_color"
                         android:layout_weight="1"
-                        android:layout_gravity="left" />
+                        android:layout_gravity="start|left" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -133,7 +133,7 @@
         android:id="@+id/fragment_article_detail_share_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="@dimen/fab_margin"
         android:background="@drawable/add_fab_background"
         android:src="@drawable/ic_share"
         android:elevation="@dimen/fab_elevation"

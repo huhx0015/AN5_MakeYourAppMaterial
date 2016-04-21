@@ -22,8 +22,11 @@
     <color name="theme_primary_dark">#1B5E20</color>
     <color name="theme_accent">#388E3C</color>
 
-    <!--ARTICLE COLOR VALUES-->
+    <!--LIST COLOR VALUES-->
     <color name="subtitle_color">#616161</color>
+
+    <!--ARTICLE COLOR VALUES-->
+    <color name="article_subtitle_color">#8fff</color>
 
     <!--PHOTO BACKGROUND COLOR VALUES-->
     <color name="photo_placeholder">#ccc</color>
