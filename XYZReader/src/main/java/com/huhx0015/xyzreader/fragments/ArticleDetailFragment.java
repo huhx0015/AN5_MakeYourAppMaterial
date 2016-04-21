@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.huhx0015.xyzreader.R;
@@ -233,7 +232,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                         @Override
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
-                            if (bitmap != null) {
+                            if (bitmap != null && !isDetached()) {
 
                                 // Sets the background color of the meta bar, based on the Palette
                                 // of the bitmap.
