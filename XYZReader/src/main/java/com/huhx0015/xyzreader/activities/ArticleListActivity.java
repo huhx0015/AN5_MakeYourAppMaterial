@@ -60,6 +60,7 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         }
 
         initToolbar();
+        initSwipeRefresh();
     }
 
     @Override
@@ -79,6 +80,15 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
 
     private void initToolbar() {
         mToolbar.setLogo(R.drawable.logo);
+    }
+
+    private void initSwipeRefresh() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
     }
 
     private void refresh() {
@@ -115,6 +125,8 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         StaggeredGridLayoutManager sglm =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(sglm);
+
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

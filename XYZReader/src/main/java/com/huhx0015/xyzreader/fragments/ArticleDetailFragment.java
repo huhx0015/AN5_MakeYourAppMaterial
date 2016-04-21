@@ -24,6 +24,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.huhx0015.xyzreader.R;
@@ -64,7 +66,6 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     public static final String ARG_ITEM_ID = "item_id";
 
     // VIEW VARIABLES
-    private boolean mIsCard = false;
     private int mScrollY;
     private int mStatusBarFullOpacityBottom;
     private int mTopInset;
@@ -77,6 +78,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
     @Bind(R.id.fragment_article_detail_collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
     @Bind(R.id.fragment_article_detail_share_fab) FloatingActionButton mFloatingActionButton;
     @Bind(R.id.fragment_article_detail_photo) ImageView mPhotoView;
+    @Bind(R.id.fragment_article_detail_meta_bar) LinearLayout mMetaBar;
     @Bind(R.id.fragment_article_detail_toolbar) Toolbar mToolbar;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
@@ -107,7 +109,7 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
             mItemId = getArguments().getLong(ARG_ITEM_ID);
         }
 
-        mIsCard = getResources().getBoolean(R.bool.detail_is_card);
+        boolean mIsCard = getResources().getBoolean(R.bool.detail_is_card);
         mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
                 R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
@@ -232,11 +234,17 @@ public class ArticleDetailFragment extends Fragment implements LoaderManager.Loa
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
+
+                                // Sets the background color of the meta bar, based on the Palette
+                                // of the bitmap.
                                 Palette p = Palette.generate(bitmap, 12);
                                 mMutedColor = p.getDarkMutedColor(0xFF333333);
-                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                mRootView.findViewById(R.id.fragment_article_detail_meta_bar)
-                                        .setBackgroundColor(mMutedColor);
+                                mMetaBar.setBackgroundColor(mMutedColor);
+
+                                // Sets the new bitmap into the ImageView.
+                                if (imageContainer.getBitmap() != null) {
+                                    mPhotoView.setImageBitmap(imageContainer.getBitmap());
+                                }
 
                                 // Sets the CollapsingToolbarLayout attributes.
                                 mCollapsingToolbarLayout.setContentScrimColor(mMutedColor);

@@ -23,7 +23,8 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/activity_article_list_swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/activity_article_list_recycler_view"
@@ -31,10 +32,10 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:scrollbarStyle="outsideOverlay"
-            android:paddingTop="@dimen/recycler_view_padding_top"
+            android:paddingTop="@dimen/recycler_view_vertical_padding"
             android:paddingLeft="@dimen/list_side_margin"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="@dimen/recycler_view_padding_bottom"
+            android:paddingBottom="@dimen/recycler_view_vertical_padding"
             app:layout_anchor="@id/activity_article_list_swipe_refresh_layout" />
     </android.support.v4.widget.SwipeRefreshLayout>
 

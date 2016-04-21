@@ -136,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"
         android:background="@drawable/add_fab_background"
-        android:src="@drawable/ic_share"
+        android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
         android:elevation="@dimen/fab_elevation"
         android:contentDescription="@string/action_share"
         android:stateListAnimator="@anim/fab_state_list_anim"
