@@ -86,6 +86,7 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                mRecyclerView.setAdapter(null);
                 refresh();
             }
         });
@@ -125,7 +126,6 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
         StaggeredGridLayoutManager sglm =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(sglm);
-
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
