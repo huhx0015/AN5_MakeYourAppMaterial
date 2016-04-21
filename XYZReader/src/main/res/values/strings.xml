@@ -9,9 +9,6 @@
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
 
-    <!--ARTICLE STRINGS-->
-    <string name="up">Up</string>
-
     <!--SHARE STRINGS-->
     <string name="share_chooser_title">Share this XYZ Reader article with:</string>
 
