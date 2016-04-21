@@ -19,6 +19,10 @@
     <dimen name="card_header_bottom_margin">4dp</dimen>
     <dimen name="card_subheader_margin">16dp</dimen>
 
+    <!--RECYCLER VIEW DIMENSIONS-->
+    <dimen name="recycler_view_padding_top">64dp</dimen>
+    <dimen name="recycler_view_padding_bottom">16dp</dimen>
+
     <!--FLOATING ACTION BUTTON DIMENSIONS-->
     <dimen name="fab_elevation">2dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>

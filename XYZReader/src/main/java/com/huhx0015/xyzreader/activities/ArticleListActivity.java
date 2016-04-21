@@ -42,9 +42,9 @@ public class ArticleListActivity extends AppCompatActivity implements LoaderMana
     private boolean mIsRefreshing = false;
 
     // VIEW INJECTION VARIABLES
-    @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
-    @Bind(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.activity_article_list_recycler_view) RecyclerView mRecyclerView;
+    @Bind(R.id.activity_article_list_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
+    @Bind(R.id.activity_article_list_toolbar) Toolbar mToolbar;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 

@@ -40,7 +40,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
     private MyPagerAdapter mPagerAdapter;
 
     // VIEW INJECTION VARIABLES
-    @Bind(R.id.pager) ViewPager mPager;
+    @Bind(R.id.activity_article_detail_pager) ViewPager mPager;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
@@ -105,7 +105,6 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
     private void initPager() {
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
-
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
