@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley;
  * [ImageLoaderHelper] CLASS
  *  -----------------------------------------------------------------------------------------------
  */
+
 public class ImageLoaderHelper {
     private static ImageLoaderHelper sInstance;
 

@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
@@ -40,6 +41,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
     private MyPagerAdapter mPagerAdapter;
 
     // VIEW INJECTION VARIABLES
+    @Bind(R.id.activity_article_list_swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.activity_article_detail_pager) ViewPager mPager;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
@@ -59,6 +61,7 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
 
         getLoaderManager().initLoader(0, null, this);
         initPager(); // Initializes the pager.
+        initSwipeRefresh(); // Initializes the SwipeRefreshLayout.
 
         if (savedInstanceState == null) {
             if (getIntent() != null && getIntent().getData() != null) {
@@ -122,6 +125,16 @@ public class ArticleDetailActivity extends AppCompatActivity implements LoaderMa
                     mCursor.moveToPosition(position);
                 }
                 mSelectedItemId = mCursor.getLong(ArticleLoader.Query._ID);
+            }
+        });
+    }
+
+    // initSwipeRefresh(): Initializes the SwipeRefreshLayout view object.
+    private void initSwipeRefresh() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getLoaderManager().initLoader(0, null, ArticleDetailActivity.this);
             }
         });
     }

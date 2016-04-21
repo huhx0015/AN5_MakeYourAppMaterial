@@ -28,7 +28,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/activity_article_list_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:scrollbarStyle="outsideOverlay"
             android:paddingTop="@dimen/recycler_view_padding_top"
