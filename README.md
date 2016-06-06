@@ -1,15 +1,16 @@
-AN5_Make_Your_App_Material
-==========================
+AN5_MakeYourAppMaterial
+=======================
 
-DEVELOPER: Michael Yoon Huh
+DEVELOPER: huhx0015
 
-XYZ Reader:
-
+### XYZ READER
 ![xyz_reader_preview](https://cloud.githubusercontent.com/assets/1645482/14717771/d6f4a4bc-07a7-11e6-8036-21cbe77920e0.gif)
+
+## Description
 
 Android Nanodegree | Project 5: Make Your App Material: A project for the Android Nanodegree program in which a mock RSS reader app is redesigned to conform with Material Design guidelines. 
 
-# How Will I Complete this Project?
+## How Will I Complete this Project?
 
 You will improve an app for this project:
 
@@ -18,7 +19,7 @@ The app is currently functional, and work in most cases for most users.
 
 Your job will be to take the user feedback in the UI Review node, and implement changes that will improve the UI and make it conform to Material Design.
 
-# Supporting Courses
+## Supporting Courses
 
 You should have the skills you need to complete this app after completing:
 
@@ -27,7 +28,7 @@ Advanced Android App Development
 Material Design for Android Developers
 You can also refer to the Material Design specification.
 
-# Required Tasks
+## Required Tasks
 
 Download a zip file of the app.
 Read the UI Review in the next node.
@@ -36,7 +37,9 @@ Execute the improvements!
 Make a single GitHub repo with your code for the app and submit it through the Nanodegree portal. See the Submission and Evaluation node for detailed instructions.
 For detailed information on how your project will be assessed, see the Rubric node.
 
-# Rubric
+## Rubric
+
+Link:  https://review.udacity.com/#!/projects/4035898751/rubric
 
 ### Required Components
 

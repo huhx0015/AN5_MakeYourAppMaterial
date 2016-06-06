@@ -1,3 +1,5 @@
+/.idea
+/.gradle
 /XYZ_Reader.iml
 /local.properties
 /XYZReader/gradle
