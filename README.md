@@ -14,8 +14,7 @@ Android Nanodegree | Project 5: Make Your App Material: A project for the Androi
 
 You will improve an app for this project:
 
-XYZ Reader: A mock RSS feed reader featuring banner photos and shocking headlines! Download the code here.
-The app is currently functional, and work in most cases for most users.
+XYZ Reader: A mock RSS feed reader featuring banner photos and shocking headlines! Download the code here. The app is currently functional, and work in most cases for most users.
 
 Your job will be to take the user feedback in the UI Review node, and implement changes that will improve the UI and make it conform to Material Design.
 
@@ -23,19 +22,19 @@ Your job will be to take the user feedback in the UI Review node, and implement 
 
 You should have the skills you need to complete this app after completing:
 
-Developing Android Apps
-Advanced Android App Development
-Material Design for Android Developers
-You can also refer to the Material Design specification.
+* Developing Android Apps
+* Advanced Android App Development
+* Material Design for Android Developers
+* You can also refer to the Material Design specification.
 
 ## Required Tasks
 
-Download a zip file of the app.
-Read the UI Review in the next node.
-Spend time exploring the current state of the app, looking for ways it could be improved. The app will need multiple improvements. Be sure to look specifically at issues called out in the UI Review.
-Execute the improvements!
-Make a single GitHub repo with your code for the app and submit it through the Nanodegree portal. See the Submission and Evaluation node for detailed instructions.
-For detailed information on how your project will be assessed, see the Rubric node.
+* Download a zip file of the app.
+* Read the UI Review in the next node.
+* Spend time exploring the current state of the app, looking for ways it could be improved. The app will need multiple improvements. Be sure to look specifically at issues called out in the UI Review.
+* Execute the improvements!
+* Make a single GitHub repo with your code for the app and submit it through the Nanodegree portal. See the Submission and Evaluation node for detailed instructions.
+* For detailed information on how your project will be assessed, see the Rubric node.
 
 ## Rubric
 
